@@ -3276,23 +3276,56 @@
     slides[0].querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
     nav.querySelectorAll('button')[0]?.classList.add('active');
 
-    /* ─── Auto-fit fit-vp slides to viewport (responsive scaling) ─── */
+    /* ─── Auto-fit fit-vp slides to viewport (robust responsive scaling) ─── */
     const DESIGN_W = 1320;
     const DESIGN_H = 760;
+
+    function fitSingleSlide(slide) {
+      if (slide.id === 's-cover') return; // cover has its own layout
+      const grid = slide.querySelector(':scope > .dense-grid');
+      if (!grid) return;
+      const sw = slide.clientWidth;
+      const sh = slide.clientHeight;
+      if (sw === 0 || sh === 0) return;
+      const scale = Math.min(sw / DESIGN_W, sh / DESIGN_H);
+      grid.style.transform = `scale(${scale})`;
+    }
+
+    let _rafId = null;
     function fitFitVpSlides() {
-      document.querySelectorAll('.slide.fit-vp').forEach(slide => {
-        if (slide.id === 's-cover') return; // cover has its own layout
-        const grid = slide.querySelector(':scope > .dense-grid');
-        if (!grid) return;
-        const sw = slide.clientWidth;
-        const sh = slide.clientHeight;
-        const scale = Math.min(sw / DESIGN_W, sh / DESIGN_H);
-        grid.style.transform = `scale(${scale})`;
+      // Debounce via requestAnimationFrame — coalesce multiple calls per frame
+      if (_rafId) cancelAnimationFrame(_rafId);
+      _rafId = requestAnimationFrame(() => {
+        document.querySelectorAll('.slide.fit-vp').forEach(fitSingleSlide);
+        _rafId = null;
       });
     }
+
+    // 1) Initial fit (synchronous, before paint)
     fitFitVpSlides();
+
+    // 2) Re-fit after fonts loaded (font metrics can shift layout)
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fitFitVpSlides);
+    }
+
+    // 3) Re-fit on window resize and full load
     window.addEventListener('resize', fitFitVpSlides);
     window.addEventListener('load', fitFitVpSlides);
+    window.addEventListener('orientationchange', fitFitVpSlides);
+
+    // 4) Re-fit periodically for first 2.5s — handles Chart.js late renders
+    let _retry = 0;
+    const _retryTimer = setInterval(() => {
+      fitFitVpSlides();
+      if (++_retry >= 12) clearInterval(_retryTimer);
+    }, 200);
+
+    // 5) ResizeObserver per fit-vp slide — handles any dynamic content/layout shift
+    if (window.ResizeObserver) {
+      const _ro = new ResizeObserver(() => fitFitVpSlides());
+      document.querySelectorAll('.slide.fit-vp').forEach(s => _ro.observe(s));
+    }
   </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f856c07acd030dc',t:'MTc3ODIxMTQwNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script>
