@@ -1832,7 +1832,8 @@
     .fv-grow { flex: 1; min-height: 0; }
     .fv-grow-15 { flex: 1.5; min-height: 0; }
     .fv-col { display: flex; flex-direction: column; min-height: 0; }
-    .fv-chart { flex: 1; min-height: 60px; position: relative; width: 100%; height: auto !important; }
+    .fv-chart { flex: 1; min-height: 60px; position: relative; width: 100%; height: auto !important; overflow: hidden; min-width: 0; }
+    .panel.compact { min-width: 0; }
     .fv-section-title { font-size: 13px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.01em; }
 
     /* ── Gantt Timeline ── */
@@ -1996,6 +1997,73 @@
     .usp-box.result.with-img .lab { padding-top: 12px; }
     .usp-box.result.with-img .val { padding-bottom: 14px; padding-top: 4px; }
 
+    /* ── Lightbox (이미지 클릭 시 전체화면 확대) ── */
+    section.slide img {
+      cursor: zoom-in;
+      transition: filter .15s, opacity .15s;
+    }
+    section.slide img:hover {
+      filter: brightness(1.05);
+      opacity: 0.95;
+    }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      padding: 40px;
+      animation: lbFadeIn .18s ease;
+    }
+    @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 95vw;
+      max-height: 92vh;
+      object-fit: contain;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
+      cursor: default;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      font-size: 28px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      line-height: 1;
+      transition: background .15s;
+    }
+    .lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
+    .lightbox-caption {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 13px;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 8px 18px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      max-width: 80vw;
+      text-align: center;
+    }
+
     /* ── Simple image helpers (local file: ./images/...) ── */
     .slide-hero-img {
       width: min(720px, 78vw);
@@ -2048,10 +2116,9 @@
         </div>
 
         <div class="cover-meta reveal d4" style="display:flex;align-items:center;gap:16px;font-size:14px;color:var(--text-muted);">
-          <span class="cover-date" style="font-weight:500;">2026.05.08</span>
+          <span class="cover-date" style="font-weight:500;">2026.05.12</span>
           <span class="divider" style="width:1px;height:14px;background:var(--border-strong);"></span>
           <div class="cover-author" style="display:flex;align-items:center;gap:8px;">
-            <div class="avatar" style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#C7D2FE,#818CF8);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;">IT</div>
             <span>Performance &amp; Commerce Team</span>
           </div>
         </div>
@@ -2266,7 +2333,7 @@
         </div>
 
         <!-- Channel charts row -->
-        <div class="reveal d1 fv-grow" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;min-height:0;">
+        <div class="reveal d1 fv-grow" style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px;min-height:0;">
           <div class="panel compact fv-col" style="padding:10px 14px;">
             <div style="display:flex;align-items:baseline;gap:8px;flex-shrink:0;">
               <span style="font-size:12px;font-weight:800;color:var(--accent);">자사몰</span>
@@ -2323,7 +2390,7 @@
         </div>
 
         <!-- Category + insights row -->
-        <div class="reveal d2 fv-grow" style="display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:12px;min-height:0;">
+        <div class="reveal d2 fv-grow" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.4fr);gap:12px;min-height:0;">
           <div class="panel compact fv-col" style="padding:10px 14px;">
             <div style="display:flex;align-items:baseline;gap:8px;flex-shrink:0;">
               <span style="font-size:12px;font-weight:800;color:#DC2626;">CP · 볼캡</span>
@@ -2483,15 +2550,15 @@
               <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #FCD9A4;border-radius:6px;box-shadow:0 1px 2px rgba(247,144,9,.05);">
                 <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#F79009;color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">1</span>
                 <div style="font-size:10.5px;line-height:1.45;">
-                  <div style="font-weight:800;color:var(--text-primary);">TS 기능성 A/B 테스트</div>
-                  <div style="color:var(--text-active);margin-top:1px;">냉감·쿨링 vs 디자인 소구 비교 집행 · <strong style="color:#B45309;">카리나 TS 착장 소재 고효율 확인 → 집중 운영</strong></div>
+                  <div style="font-weight:800;color:var(--text-primary);">CP 소두핏 중심의 소재 확대</div>
+                  <div style="color:var(--text-active);margin-top:1px;">볼캡 CP 고효율 소재 중심 씨딩 확대 · GWP·포토카드 META 지속 <strong style="color:#B45309;">(ROAS 400%+ 목표)</strong></div>
                 </div>
               </div>
               <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #FCD9A4;border-radius:6px;box-shadow:0 1px 2px rgba(247,144,9,.05);">
                 <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#F79009;color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">2</span>
                 <div style="font-size:10.5px;line-height:1.45;">
-                  <div style="font-weight:800;color:var(--text-primary);">CP 인플루언서 씨딩 확대</div>
-                  <div style="color:var(--text-active);margin-top:1px;">볼캡 CP 고효율 소재 중심 씨딩 확대 · GWP·포토카드 META 지속 <strong style="color:#B45309;">(ROAS 400%+ 목표)</strong></div>
+                  <div style="font-weight:800;color:var(--text-primary);">TS 기능성 A/B 테스트</div>
+                  <div style="color:var(--text-active);margin-top:1px;">냉감·쿨링 vs 디자인 소구 비교 집행 · <strong style="color:#B45309;">카리나 TS 착장 소재 고효율 확인 → 집중 운영</strong></div>
                 </div>
               </div>
               <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #FCD9A4;border-radius:6px;box-shadow:0 1px 2px rgba(247,144,9,.05);">
@@ -2692,8 +2759,16 @@
               </div>
 
               <!-- Insight callout -->
-              <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;margin-top:6px;padding:5px 8px;background:var(--bg-subtle);border-radius:5px;border-left:3px solid var(--accent);flex-shrink:0;">
-                → 히든페이지·광고 소재 일관성 유지 시 킬러 아이템 중심 브랜딩 강화 인사이트 확보
+              <div style="display:grid;gap:4px;margin-top:6px;flex-shrink:0;">
+                <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;padding:5px 8px;background:#FEECEB;border-radius:5px;border-left:3px solid #DC2626;">
+                  <strong style="color:#B4251D;">⚠ 불일치 시</strong> · 광고 소재와 랜딩페이지 기획전 배너 불일치 → <strong style="color:#B4251D;">이탈율 발생</strong>
+                </div>
+                <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;padding:5px 8px;background:var(--accent-soft);border-radius:5px;border-left:3px solid var(--accent);">
+                  <strong style="color:var(--accent);">✓ 일치 전략</strong> · 우수 광고소재 = 랜딩페이지 일치시켜 이탈 최소화 → <strong style="color:var(--accent);">전환율 향상 + 킬러 아이템 중심 브랜딩 강화</strong>
+                </div>
+                <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;padding:5px 8px;background:#E6F7EF;border-radius:5px;border-left:3px solid #12B76A;">
+                  <strong style="color:#0C8A52;">📈 데이터 검증</strong> · CVR <strong style="color:#0C8A52;">+0.5~0.7%p</strong> · ROAS <strong style="color:#0C8A52;">+119~330%p</strong> · 객단가 <strong style="color:#0C8A52;">+59~64%</strong> — 메시지 정합성이 <strong style="color:var(--text-primary);">트래픽 양보다 전환 질을 견인</strong>
+                </div>
               </div>
 
               <!-- 3 thumbnails -->
@@ -3196,6 +3271,26 @@
           </div>
         </div>
 
+        <!-- 릴스 트렌딩 광고 차별점 -->
+        <div class="reveal d2" style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:10px;flex-shrink:0;background:linear-gradient(135deg,#EEF1FF 0%,#fff 80%);border:1px solid #DCE3FF;border-radius:8px;padding:8px 14px;align-items:stretch;box-shadow:var(--shadow-soft);">
+          <div style="display:flex;align-items:center;gap:6px;padding-right:10px;border-right:1px solid var(--border);">
+            <span style="display:inline-flex;width:20px;height:20px;border-radius:5px;background:var(--accent);color:#fff;align-items:center;justify-content:center;font-size:11px;">▶️</span>
+            <span style="font-size:11.5px;font-weight:800;color:var(--accent);letter-spacing:-0.01em;line-height:1.2;">릴스 트렌딩 광고<br/>차별점</span>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:1px;">
+            <div style="font-size:9.5px;font-weight:800;color:#0C8A52;letter-spacing:0.04em;">① 트렌드 콘텐츠 인식</div>
+            <div style="font-size:9.5px;color:var(--text-active);line-height:1.4;">'광고'가 아닌 <strong style="color:var(--text-primary);">'트렌드 콘텐츠'로 인식</strong> → 시청 완료율 극대화</div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:1px;">
+            <div style="font-size:9.5px;font-weight:800;color:var(--accent);letter-spacing:0.04em;">② 알고리즘 바이럴</div>
+            <div style="font-size:9.5px;color:var(--text-active);line-height:1.4;">유료 노출 + <strong style="color:var(--text-primary);">알고리즘 추천</strong> → 추가 도달·바이럴 효과</div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:1px;">
+            <div style="font-size:9.5px;font-weight:800;color:#B45309;letter-spacing:0.04em;">③ 자발적 확산</div>
+            <div style="font-size:9.5px;color:var(--text-active);line-height:1.4;">사용자 인게이지먼트(좋아요·공유·저장) → <strong style="color:var(--text-primary);">자발적 확산 기대</strong></div>
+          </div>
+        </div>
+
         <!-- 영상 퍼널 강화 전략 (외부 데이터 기반 근거) -->
         <div class="reveal d2" style="display:grid;grid-template-columns:1fr 1.15fr;gap:12px;flex-shrink:0;">
           <!-- 외부 데이터: stat card 시각화 -->
@@ -3260,6 +3355,13 @@
     </section>
 
   </div><!-- /stage -->
+
+  <!-- Lightbox overlay (이미지 확대 보기) -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-label="이미지 확대 보기">
+    <button class="lightbox-close" id="lightboxClose" aria-label="닫기">×</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
 
   <script>
     /* ─── Slide data ─── */
@@ -3384,6 +3486,59 @@
       const _ro = new ResizeObserver(() => fitFitVpSlides());
       document.querySelectorAll('.slide.fit-vp').forEach(s => _ro.observe(s));
     }
+
+    /* ─── Image Lightbox (클릭 시 전체화면 확대) ─── */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightboxCaption.textContent = alt || '';
+      lightboxCaption.style.display = alt ? '' : 'none';
+      lightbox.classList.add('active');
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      // Defer src clear to avoid flicker before fade-out
+      setTimeout(() => { if (!lightbox.classList.contains('active')) lightboxImg.src = ''; }, 200);
+    }
+
+    // Attach click to all slide images
+    document.querySelectorAll('section.slide img').forEach(img => {
+      img.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    // Gantt bars in slide 8 have gradient/text overlay covering the image.
+    // Bind click to the gantt-bar container so user can still click anywhere on the bar.
+    document.querySelectorAll('section.slide .gantt-bar').forEach(bar => {
+      const img = bar.querySelector('img');
+      if (!img) return;
+      bar.style.cursor = 'zoom-in';
+      bar.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    // Click overlay (not the image) to close
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    // ESC key closes lightbox (priority over slide nav)
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        e.stopPropagation();
+        closeLightbox();
+      }
+    }, true); // capture phase
   </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f856c07acd030dc',t:'MTc3ODIxMTQwNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script>
