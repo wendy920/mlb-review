@@ -1786,23 +1786,34 @@
       transform: translateX(2px) scale(0.998);
     }
 
-    /* Fit-to-viewport slide override (no scroll within slide) */
+    /* Fit-to-viewport slide override — fixed design canvas (1320×760), JS auto-scales to fit any screen */
     .slide.fit-vp {
-      align-content: stretch;
-      padding: 26px clamp(36px, 5vw, 80px);
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
       height: 100vh;
       max-height: 100vh;
       overflow: hidden;
     }
-    .slide.fit-vp > * {
-      align-self: stretch;
-    }
     .slide.fit-vp > .dense-grid {
       display: flex !important;
       flex-direction: column;
-      height: 100%;
-      width: 100%;
+      width: 1320px !important;
+      max-width: 1320px !important;
+      height: 760px;
+      padding: 26px 50px;
+      box-sizing: border-box;
       gap: 10px;
+      flex-shrink: 0;
+      transform-origin: center center;
+    }
+    /* Cover slide doesn't use dense-grid; preserve its native padding & grid layout */
+    #s-cover.fit-vp {
+      display: grid !important;
+      padding: 26px clamp(36px, 5vw, 80px);
+      align-content: center;
+      justify-items: center;
     }
     .fv-row { display: grid; gap: 12px; min-height: 0; }
     .fv-row.c2 { grid-template-columns: 1fr 1fr; }
@@ -2488,7 +2499,7 @@
             <div style="font-size:9.5px;color:var(--text-muted);font-style:italic;margin-top:2px;margin-bottom:6px;flex-shrink:0;">현재 런칭 예상 일정 8/2 (앞당길 시 최대 2주)</div>
 
             <div style="flex:1;min-height:0;background:#F7F8FA;border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-              <img src="images/slide5_qfit_newcolor.png" alt="Q핏 볼캡 신컬러" style="width:100%;height:100%;object-fit:contain;display:block;">
+              <img src="주소를 입력하세요" alt="Q핏 볼캡 신컬러" style="width:100%;height:100%;object-fit:contain;display:block;">
             </div>
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px;flex-shrink:0;">
@@ -2666,15 +2677,15 @@
               <!-- 3 thumbnails -->
               <div class="fv-grow" style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:6px;">
                 <div class="thumb fv-col" style="height:100%;">
-                  <img src="images/slide1_그림_43_frame1.png" alt="CP 소두핏" style="flex:1;min-height:0;width:100%;object-fit:cover;">
+                  <img src="주소를 입력하세요" alt="CP 소두핏" style="flex:1;min-height:0;width:100%;object-fit:cover;">
                   <span class="cap" style="font-size:9.5px;padding:3px 2px;flex-shrink:0;">CP 소두핏</span>
                 </div>
                 <div class="thumb fv-col" style="height:100%;">
-                  <img src="images/slide1_그림_44.png" alt="쿨링티셔츠" style="flex:1;min-height:0;width:100%;object-fit:cover;">
+                  <img src="주소를 입력하세요" alt="쿨링티셔츠" style="flex:1;min-height:0;width:100%;object-fit:cover;">
                   <span class="cap" style="font-size:9.5px;padding:3px 2px;flex-shrink:0;">쿨링티셔츠</span>
                 </div>
                 <div class="thumb fv-col" style="height:100%;">
-                  <img src="images/slide1_편안한소재.png" alt="BASIC & COMFY" style="flex:1;min-height:0;width:100%;object-fit:cover;">
+                  <img src="주소를 입력하세요" alt="BASIC & COMFY" style="flex:1;min-height:0;width:100%;object-fit:cover;">
                   <span class="cap" style="font-size:9.5px;padding:3px 2px;flex-shrink:0;">BASIC &amp; COMFY</span>
                 </div>
               </div>
@@ -2853,11 +2864,11 @@
             <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:3px;margin-bottom:10px;flex-shrink:0;">이미지형 vs 컬렉션형 — 컬렉션형 도입 시 효율 큰 폭 개선</p>
             <div class="fv-grow" style="display:grid;grid-template-columns:1fr 1fr 1.7fr;gap:12px;align-items:start;min-height:0;">
               <div class="ad-thumb fv-col" style="height:100%;align-self:stretch;background:#F7F8FA;">
-                <img src="images/slide2_그림_67.png" alt="무신사 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
+                <img src="주소를 입력하세요" alt="무신사 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
                 <span class="cap" style="font-size:10.5px;padding:5px 4px;flex-shrink:0;">무신사</span>
               </div>
               <div class="ad-thumb fv-col" style="height:100%;align-self:stretch;background:#F7F8FA;">
-                <img src="images/slide2_그림_68.png" alt="네이버 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
+                <img src="주소를 입력하세요" alt="네이버 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
                 <span class="cap" style="font-size:10.5px;padding:5px 4px;flex-shrink:0;">네이버</span>
               </div>
               <table class="data-table" style="font-size:11.5px;align-self:start;">
@@ -2932,7 +2943,7 @@
               </div>
               <!-- Right: Q핏 model image -->
               <div class="ad-thumb fv-col" style="align-self:stretch;background:#F7F8FA;">
-                <img src="images/slide2_그림_70.png" alt="Q핏 볼캡 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
+                <img src="주소를 입력하세요" alt="Q핏 볼캡 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
                 <span class="cap" style="font-size:10.5px;padding:5px 4px;flex-shrink:0;">Q핏 볼캡 게재면</span>
               </div>
             </div>
@@ -3001,12 +3012,12 @@
                 <div class="gantt-vline" style="left:0%;"></div>
                 <div class="gantt-vline" style="left:50%;"></div>
                 <div class="gantt-bar pink" style="left:0%;width:43%;padding:0;overflow:hidden;position:absolute;top:6px;bottom:6px;">
-                  <img src="images/slide5_그림_87.png" alt="TikTok 슈퍼라이크 TWS" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center;">
+                  <img src="주소를 입력하세요" alt="TikTok 슈퍼라이크 TWS" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center;">
                   <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(236,72,153,0.08), rgba(236,72,153,0.82));"></div>
                   <span style="position:absolute;left:10px;bottom:6px;right:10px;color:#fff;font-weight:800;font-size:11px;text-shadow:0 1px 2px rgba(0,0,0,0.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">슈퍼라이크 (TWS 도달)</span>
                 </div>
                 <div class="gantt-bar pink" style="left:50%;width:37.5%;padding:0;overflow:hidden;position:absolute;top:6px;bottom:6px;">
-                  <img src="images/slide5_그림_87.png" alt="TikTok 슈퍼라이크 카리나" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;">
+                  <img src="주소를 입력하세요" alt="TikTok 슈퍼라이크 카리나" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;">
                   <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(236,72,153,0.08), rgba(236,72,153,0.82));"></div>
                   <span style="position:absolute;left:10px;bottom:6px;right:10px;color:#fff;font-weight:800;font-size:11px;text-shadow:0 1px 2px rgba(0,0,0,0.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">슈퍼라이크 (카리나)</span>
                 </div>
@@ -3018,7 +3029,7 @@
                 <div class="gantt-vline" style="left:0%;"></div>
                 <div class="gantt-vline" style="left:50%;"></div>
                 <div class="gantt-bar blue" style="left:50%;width:50%;padding:0;overflow:hidden;position:absolute;top:6px;bottom:6px;">
-                  <img src="images/slide5_그림_90.png" alt="Meta 릴스 트렌딩 광고" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                  <img src="주소를 입력하세요" alt="Meta 릴스 트렌딩 광고" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
                   <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(61,90,254,0.08), rgba(61,90,254,0.82));"></div>
                   <span style="position:absolute;left:10px;bottom:6px;right:10px;color:#fff;font-weight:800;font-size:11px;text-shadow:0 1px 2px rgba(0,0,0,0.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">M3 + 릴스 트렌딩 · FE1829 · 4,240만원</span>
                 </div>
@@ -3242,6 +3253,24 @@
     /* ─── Init first slide reveals ─── */
     slides[0].querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
     nav.querySelectorAll('button')[0]?.classList.add('active');
+
+    /* ─── Auto-fit fit-vp slides to viewport (responsive scaling) ─── */
+    const DESIGN_W = 1320;
+    const DESIGN_H = 760;
+    function fitFitVpSlides() {
+      document.querySelectorAll('.slide.fit-vp').forEach(slide => {
+        if (slide.id === 's-cover') return; // cover has its own layout
+        const grid = slide.querySelector(':scope > .dense-grid');
+        if (!grid) return;
+        const sw = slide.clientWidth;
+        const sh = slide.clientHeight;
+        const scale = Math.min(sw / DESIGN_W, sh / DESIGN_H);
+        grid.style.transform = `scale(${scale})`;
+      });
+    }
+    fitFitVpSlides();
+    window.addEventListener('resize', fitFitVpSlides);
+    window.addEventListener('load', fitFitVpSlides);
   </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f856c07acd030dc',t:'MTc3ODIxMTQwNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script>
