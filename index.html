@@ -1818,6 +1818,11 @@
       gap: 10px;
       flex-shrink: 0;
       transform-origin: center center;
+      overflow: hidden;
+    }
+    /* Slide 4 channel charts headline은 길어서 살짝 줄임 */
+    #s-channel-insight .slide-titlebar h2.headline {
+      font-size: clamp(16px, 1.6vw, 22px) !important;
     }
     /* Cover slide doesn't use dense-grid; preserve its native padding & grid layout */
     #s-cover.fit-vp {
@@ -2702,17 +2707,17 @@
         <div class="slide-titlebar reveal" style="margin-bottom:0;">
           <div class="left" style="gap:4px;">
             <span class="eyebrow"><span class="dot"></span>광고 성과 및 인사이트</span>
-            <h2 class="headline" style="font-size:clamp(20px,2.1vw,28px);margin:4px 0 2px;">TS · CP 캠페인 집중 전략으로 핵심 아이템 매출 견인</h2>
-            <p class="lede" style="font-size:13px;line-height:1.45;margin:0;max-width:none;white-space:nowrap;">광고비 ▼10% 절감에도 GA 매출·ROAS 큰 폭 성장 — 킬러 아이템 중심의 매출 성장 및 효율 최적화</p>
+            <h2 class="headline" style="font-size:clamp(20px,2.1vw,28px);margin:4px 0 2px;">4월 TS · CP 캠페인 집중 전략으로 핵심 아이템 매출 견인</h2>
+            <p class="lede" style="font-size:13px;line-height:1.45;margin:0;max-width:none;white-space:nowrap;">3월 대비 4월 광고비 ▼10% 절감에도 GA 매출·ROAS 큰 폭 성장 — 킬러 아이템 중심의 매출 성장 및 효율 최적화</p>
           </div>
         </div>
 
         <!-- 3 KPI cards (큰 성과 수치) -->
         <div class="kpi-grid reveal d1" style="gap:12px;">
           <div class="kpi-card" style="padding:10px 14px;gap:2px;">
-            <div class="kpi-label" style="font-size:12px;">총 매출 증감 (전월 대비)</div>
-            <div class="kpi-val success" style="font-size:clamp(20px,2.2vw,28px);">+10,868,400<small>원</small></div>
-            <div class="kpi-sub" style="font-size:11px;">29,454,000원 → 40,322,400원</div>
+            <div class="kpi-label" style="font-size:12px;">광고 매출 증감 (3월 → 4월)</div>
+            <div class="kpi-val success" style="font-size:clamp(20px,2.2vw,28px);">약 +2.07<small>억원</small></div>
+            <div class="kpi-sub" style="font-size:11px;">1,524,956,706원 → 1,732,093,369원 (+13.6%)</div>
           </div>
           <div class="kpi-card" style="padding:10px 14px;gap:2px;">
             <div class="kpi-label" style="font-size:12px;">TS (티셔츠) 매출 성장</div>
@@ -2720,9 +2725,9 @@
             <div class="kpi-sub" style="font-size:11px;">344,000원 → 23,185,000원 폭증</div>
           </div>
           <div class="kpi-card" style="padding:10px 14px;gap:2px;">
-            <div class="kpi-label" style="font-size:12px;">메타 ASC 도입 후 ROAS</div>
-            <div class="kpi-val" style="font-size:clamp(20px,2.2vw,28px);">492<small>%</small></div>
-            <div class="kpi-sub" style="font-size:11px;">일반 캠페인 대비 +100%p 상승</div>
+            <div class="kpi-label" style="font-size:12px;">종합 ROAS (3월 → 4월)</div>
+            <div class="kpi-val" style="font-size:clamp(20px,2.2vw,28px);">578<small>%</small></div>
+            <div class="kpi-sub" style="font-size:11px;">3월 534% 대비 <strong style="color:#0C8A52;">+44%p</strong> 상승</div>
           </div>
         </div>
 
@@ -2752,9 +2757,21 @@
                   <div style="font-size:10.5px;font-weight:700;color:var(--text-primary);line-height:1.35;margin-top:2px;">USP 일치<br/>메시지 매칭</div>
                 </div>
                 <span style="align-self:center;color:var(--accent);font-size:12px;font-weight:800;">→</span>
-                <div style="background:linear-gradient(135deg,#1A1C1F,#2B2E33);border-radius:5px;padding:4px 5px;text-align:center;color:#fff;">
-                  <div style="font-size:9px;font-weight:800;color:rgba(255,255,255,.6);letter-spacing:0.06em;">RESULT ROAS</div>
-                  <div style="font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1;margin-top:1px;">1,515<small style="font-size:.55em;">%</small></div>
+                <div style="background:linear-gradient(135deg,#1A1C1F,#2B2E33);border-radius:5px;padding:6px 8px;text-align:center;color:#fff;display:flex;flex-direction:column;gap:3px;">
+                  <div style="font-size:8.5px;font-weight:800;color:rgba(255,255,255,.6);letter-spacing:0.06em;">테스트 기간 RESULT</div>
+                  <div style="display:flex;justify-content:space-around;gap:6px;">
+                    <div>
+                      <div style="font-size:8.5px;color:rgba(255,255,255,.55);font-weight:700;letter-spacing:0.04em;">CP ROAS</div>
+                      <div style="font-size:13px;font-weight:800;color:#fff;line-height:1;margin-top:1px;">323<small style="font-size:.55em;">%</small></div>
+                      <div style="font-size:8.5px;font-weight:700;color:#86E0B3;margin-top:1px;">+119%p</div>
+                    </div>
+                    <div style="width:1px;background:rgba(255,255,255,.15);"></div>
+                    <div>
+                      <div style="font-size:8.5px;color:rgba(255,255,255,.55);font-weight:700;letter-spacing:0.04em;">TS ROAS</div>
+                      <div style="font-size:13px;font-weight:800;color:#fff;line-height:1;margin-top:1px;">563<small style="font-size:.55em;">%</small></div>
+                      <div style="font-size:8.5px;font-weight:700;color:#86E0B3;margin-top:1px;">+330%p</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -2762,9 +2779,6 @@
               <div style="display:grid;gap:4px;margin-top:6px;flex-shrink:0;">
                 <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;padding:5px 8px;background:#FEECEB;border-radius:5px;border-left:3px solid #DC2626;">
                   <strong style="color:#B4251D;">⚠ 불일치 시</strong> · 광고 소재와 랜딩페이지 기획전 배너 불일치 → <strong style="color:#B4251D;">이탈율 발생</strong>
-                </div>
-                <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;padding:5px 8px;background:var(--accent-soft);border-radius:5px;border-left:3px solid var(--accent);">
-                  <strong style="color:var(--accent);">✓ 일치 전략</strong> · 우수 광고소재 = 랜딩페이지 일치시켜 이탈 최소화 → <strong style="color:var(--accent);">전환율 향상 + 킬러 아이템 중심 브랜딩 강화</strong>
                 </div>
                 <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;padding:5px 8px;background:#E6F7EF;border-radius:5px;border-left:3px solid #12B76A;">
                   <strong style="color:#0C8A52;">📈 데이터 검증</strong> · CVR <strong style="color:#0C8A52;">+0.5~0.7%p</strong> · ROAS <strong style="color:#0C8A52;">+119~330%p</strong> · 객단가 <strong style="color:#0C8A52;">+59~64%</strong> — 메시지 정합성이 <strong style="color:var(--text-primary);">트래픽 양보다 전환 질을 견인</strong>
@@ -2918,37 +2932,101 @@
             <div style="font-size:13px;font-weight:800;color:var(--text-primary);flex-shrink:0;">
               <span style="color:var(--accent);">①</span> 채널별 매출 × ROAS (2026.4)
             </div>
-            <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:3px;margin-bottom:8px;flex-shrink:0;">공식몰 매출 견인 · 무신사·공식몰 ROAS 600%대 동반 효율</p>
+            <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:3px;margin-bottom:8px;flex-shrink:0;">🏆 무신사 ROAS 754% 압도적 효율 · 🚀 네이버 매출 +38.1% MoM 급성장 · 공식몰 11.44억 매출 견인</p>
             <div class="fv-chart">
               <canvas id="chart-channel-rev"></canvas>
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;flex-shrink:0;">
-              <div style="padding:8px 10px;background:var(--accent-soft);border-radius:6px;border-left:3px solid var(--accent);">
-                <div style="font-size:11.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;">477,372,829원</div>
-                <div style="font-size:10.5px;font-weight:600;color:var(--accent);margin-top:2px;">공식몰 ROAS <strong>597%</strong></div>
+              <div style="padding:8px 10px;background:var(--accent-soft);border-radius:6px;border-left:3px solid var(--accent);position:relative;">
+                <div style="font-size:11.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;">1,144,281,316원</div>
+                <div style="font-size:10.5px;font-weight:600;color:var(--accent);margin-top:2px;">공식몰 ROAS <strong>615%</strong></div>
               </div>
-              <div style="padding:8px 10px;background:#E6F7EF;border-radius:6px;border-left:3px solid #12B76A;">
-                <div style="font-size:11.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;">113,079,817원</div>
-                <div style="font-size:10.5px;font-weight:600;color:#0C8A52;margin-top:2px;">무신사 ROAS <strong>603%</strong></div>
+              <div style="padding:8px 10px;background:#E6F7EF;border-radius:6px;border:2px solid #12B76A;box-shadow:0 2px 8px rgba(18,183,106,.18);position:relative;">
+                <div style="position:absolute;top:-9px;right:6px;background:#12B76A;color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;letter-spacing:0.04em;">🏆 효율 1위</div>
+                <div style="font-size:11.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;">348,763,313원</div>
+                <div style="font-size:10.5px;font-weight:600;color:#0C8A52;margin-top:2px;">무신사 ROAS <strong>754%</strong></div>
               </div>
-              <div style="padding:8px 10px;background:#FEF3C7;border-radius:6px;border-left:3px solid #F79009;">
-                <div style="font-size:11.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;">91,441,510원</div>
-                <div style="font-size:10.5px;font-weight:600;color:#B45309;margin-top:2px;">네이버 ROAS <strong>364%</strong></div>
+              <div style="padding:8px 10px;background:#FEF3C7;border-radius:6px;border:2px solid #F79009;box-shadow:0 2px 8px rgba(247,144,9,.18);position:relative;">
+                <div style="position:absolute;top:-9px;right:6px;background:#F79009;color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;letter-spacing:0.04em;">🚀 성장 1위</div>
+                <div style="font-size:11.5px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;">239,048,740원</div>
+                <div style="font-size:10.5px;font-weight:600;color:#B45309;margin-top:2px;">네이버 ROAS <strong>348%</strong> · +38% MoM</div>
               </div>
             </div>
           </div>
 
-          <!-- ② 채널 확장 성과 (전년 SS 대비) -->
+          <!-- ② 전월(3월) 대비 4월 광고 성과 변화 -->
           <div class="panel compact fv-col" style="padding:14px 18px;">
             <div style="font-size:13px;font-weight:800;color:var(--text-primary);flex-shrink:0;">
-              <span style="color:var(--accent);">②</span> 채널 확장 성과 — 전년 SS 대비 매출 성장
+              <span style="color:var(--accent);">②</span> 채널별 광고 성과 변화 (3월 → 4월)
             </div>
-            <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:3px;margin-bottom:8px;flex-shrink:0;">공식몰 검증 전략 이식 → 전 채널 고른 매출 성장 견인</p>
-            <div class="fv-chart">
-              <canvas id="chart-yoy-growth"></canvas>
+            <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:3px;margin-bottom:8px;flex-shrink:0;">무신사 = 최강 효율 · 네이버 = 광고비 +32% 대비 매출 +38% 동반 성장</p>
+
+            <!-- 3개 채널 행 비교 (매출 / ROAS / CVR) -->
+            <div style="display:grid;gap:6px;flex-shrink:0;font-size:10.5px;">
+              <!-- 헤더 -->
+              <div style="display:grid;grid-template-columns:88px 1fr 1fr 1fr;gap:6px;font-size:9.5px;font-weight:700;color:var(--text-muted);padding:0 4px;letter-spacing:0.04em;">
+                <div>채널</div>
+                <div style="text-align:right;">거래액 변화</div>
+                <div style="text-align:right;">ROAS 변화</div>
+                <div style="text-align:right;">CVR (4월)</div>
+              </div>
+              <!-- 무신사 (효율 1위) -->
+              <div style="display:grid;grid-template-columns:88px 1fr 1fr 1fr;gap:6px;align-items:center;padding:8px 8px;background:#E6F7EF;border:2px solid #12B76A;border-radius:6px;box-shadow:0 2px 6px rgba(18,183,106,.15);">
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="font-size:11px;font-weight:800;color:#0C8A52;">🏆 무신사</span>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:10px;color:var(--text-muted);">3.58억 → 3.49억</div>
+                  <div style="font-size:11px;font-weight:800;color:#B4251D;">-2.6%</div>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:10px;color:var(--text-muted);">918% → <strong style="color:#0C8A52;font-size:13px;">754%</strong></div>
+                  <div style="font-size:10.5px;font-weight:700;color:#0C8A52;">압도적 1위</div>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:14px;font-weight:800;color:#0C8A52;">4.62%</div>
+                  <div style="font-size:9.5px;color:#0C8A52;font-weight:700;">전 채널 1위</div>
+                </div>
+              </div>
+              <!-- 네이버 (성장 1위) -->
+              <div style="display:grid;grid-template-columns:88px 1fr 1fr 1fr;gap:6px;align-items:center;padding:8px 8px;background:#FEF3C7;border:2px solid #F79009;border-radius:6px;box-shadow:0 2px 6px rgba(247,144,9,.15);">
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="font-size:11px;font-weight:800;color:#B45309;">🚀 네이버</span>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:10px;color:var(--text-muted);">1.73억 → 2.39억</div>
+                  <div style="font-size:13px;font-weight:800;color:#B45309;">+38.1%</div>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:10px;color:var(--text-muted);">347% → 364%</div>
+                  <div style="font-size:10.5px;font-weight:700;color:#B45309;">+17%p ↑</div>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:12px;font-weight:700;color:#B45309;">2.33%</div>
+                  <div style="font-size:9.5px;color:#B45309;">+0.14%p</div>
+                </div>
+              </div>
+              <!-- 공식몰 (매출 메인) -->
+              <div style="display:grid;grid-template-columns:88px 1fr 1fr 1fr;gap:6px;align-items:center;padding:7px 8px;background:#fff;border:1px solid var(--border);border-radius:6px;">
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="font-size:11px;font-weight:800;color:var(--accent);">공식몰</span>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:10px;color:var(--text-muted);">9.94억 → 11.44억</div>
+                  <div style="font-size:11.5px;font-weight:700;color:var(--accent);">+15.1%</div>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:10px;color:var(--text-muted);">500% → 615%</div>
+                  <div style="font-size:10.5px;font-weight:700;color:var(--accent);">+116%p ↑</div>
+                </div>
+                <div style="text-align:right;font-variant-numeric:tabular-nums;">
+                  <div style="font-size:12px;font-weight:700;color:var(--accent);">1.82%</div>
+                  <div style="font-size:9.5px;color:var(--accent);">+0.28%p</div>
+                </div>
+              </div>
             </div>
-            <div style="font-size:10.5px;color:var(--text-muted);margin-top:12px;flex-shrink:0;line-height:1.6;">
-              ▪ 공식몰 477,372,829원 · 무신사 113,079,817원 · 네이버 91,441,510원<br/>
+
+            <div style="font-size:10.5px;color:var(--text-active);margin-top:auto;padding-top:10px;flex-shrink:0;line-height:1.55;">
               <span style="color:#B4251D;font-style:italic;font-weight:700;">※ 무신사 Q핏 볼캡 ROAS 842% (압도적 효율)</span>
             </div>
           </div>
@@ -3141,75 +3219,6 @@
               </div>
             </div>
 
-            <!-- 3-column detail strip: TIKTOK / META 퍼널 / 크리에이티브 -->
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;flex-shrink:0;">
-
-              <!-- Col 1: TIKTOK 슈퍼라이크 -->
-              <div style="background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;">
-                <div style="padding:5px 10px;font-size:10.5px;font-weight:800;color:var(--text-primary);letter-spacing:-0.01em;border-bottom:1px solid var(--border);">
-                  <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#EC4899;margin-right:5px;vertical-align:middle;"></span>틱톡 슈퍼라이크 — 영타겟 집중
-                </div>
-                <div style="padding:4px 8px;background:#FCE7F3;text-align:center;font-size:9.5px;font-weight:700;color:#9D174D;">
-                  TWS 5/6~5/13 | 카리나 5/14~5/20
-                </div>
-                <div style="padding:6px 10px;display:grid;gap:4px;">
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• 영타겟 집중 슈퍼라이크 도달 캠페인</strong><br/>
-                    <span style="font-size:9.5px;color:var(--text-muted);padding-left:8px;">라이크 유저 → 브랜드 애니메이션 → 이벤트 배너</span>
-                  </div>
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• TWS (데빌볼캡) / 카리나 핵심 아이템</strong><br/>
-                    <span style="font-size:9.5px;color:var(--text-muted);padding-left:8px;">채널 이슈라이징 유도</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Col 2: META 퍼널 구조 -->
-              <div style="background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;">
-                <div style="padding:5px 10px;font-size:10.5px;font-weight:800;color:var(--text-primary);letter-spacing:-0.01em;border-bottom:1px solid var(--border);">
-                  <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:5px;vertical-align:middle;"></span>META 퍼널 — 릴스 노출 600만
-                </div>
-                <div style="padding:4px 8px;background:var(--accent-soft);text-align:center;font-size:9.5px;font-weight:700;color:var(--accent);">
-                  Upper → Mid → Lower 단계별 연결
-                </div>
-                <div style="padding:6px 10px;display:grid;gap:3px;">
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• Upper — M3 + 릴스 트렌딩</strong><br/>
-                    <span style="font-size:9.5px;color:var(--text-muted);padding-left:8px;">FE1829 · 5/14 · 4,240만원 · 도달 50%</span>
-                  </div>
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• Mid — 장바구니 캠페인</strong><br/>
-                    <span style="font-size:9.5px;color:var(--text-muted);padding-left:8px;">FE3059 · 조회 리타겟팅 → 전환 가망</span>
-                  </div>
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• Lower — ASC 배너 전환</strong><br/>
-                    <span style="font-size:9.5px;color:var(--text-muted);padding-left:8px;">MF1844 · 4월 고효율 타겟 재활용</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Col 3: 크리에이티브 운영 -->
-              <div style="background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;">
-                <div style="padding:5px 10px;font-size:10.5px;font-weight:800;color:var(--text-primary);letter-spacing:-0.01em;border-bottom:1px solid var(--border);">
-                  <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#F79009;margin-right:5px;vertical-align:middle;"></span>크리에이티브 운영
-                </div>
-                <div style="padding:4px 8px;background:#FEF3C7;text-align:center;font-size:9.5px;font-weight:700;color:#B45309;">
-                  5/14 이전 브릿지 → 릴리즈 이후 전환
-                </div>
-                <div style="padding:6px 10px;display:grid;gap:3px;">
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• M3 소재: 카리나 TS 화보컷 5종</strong>
-                  </div>
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• AI FOOH 고효율 소재 중심</strong>
-                  </div>
-                  <div style="font-size:10.5px;color:var(--text-active);line-height:1.4;">
-                    <strong style="color:var(--text-primary);">• 【릴리즈】 카리나 단독 + USP 병행</strong><br/>
-                    <span style="font-size:9.5px;color:var(--text-muted);padding-left:8px;">RN 가벼움 / CP 소두핏 / TS 편안한 착용감</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <!-- ============ 6월 (right) ============ -->
@@ -3288,6 +3297,34 @@
           <div style="display:flex;flex-direction:column;justify-content:center;gap:1px;">
             <div style="font-size:9.5px;font-weight:800;color:#B45309;letter-spacing:0.04em;">③ 자발적 확산</div>
             <div style="font-size:9.5px;color:var(--text-active);line-height:1.4;">사용자 인게이지먼트(좋아요·공유·저장) → <strong style="color:var(--text-primary);">자발적 확산 기대</strong></div>
+          </div>
+        </div>
+
+        <!-- Meta가 강조하는 릴스 신규 상품 라인업 -->
+        <div class="reveal d2" style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:10px;flex-shrink:0;background:linear-gradient(135deg,#FFF5F8 0%,#fff 80%);border:1px solid #FBCFE8;border-radius:8px;padding:8px 14px;align-items:stretch;box-shadow:var(--shadow-soft);">
+          <div style="display:flex;align-items:center;gap:6px;padding-right:10px;border-right:1px solid var(--border);">
+            <span style="display:inline-flex;width:20px;height:20px;border-radius:5px;background:#EC4899;color:#fff;align-items:center;justify-content:center;font-size:11px;">🆕</span>
+            <span style="font-size:11.5px;font-weight:800;color:#9D174D;letter-spacing:-0.01em;line-height:1.2;">Meta 강조<br/>릴스 신규 상품</span>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:1px;">
+            <div style="font-size:9.5px;font-weight:800;color:#9D174D;letter-spacing:0.04em;">① Reels Trending Ads</div>
+            <div style="font-size:9.5px;color:var(--text-active);line-height:1.4;">성과 기반 상위 릴스 자동 선별 노출 · <strong style="color:#9D174D;">카테고리 타겟팅</strong>(패션·뷰티)</div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:1px;">
+            <div style="font-size:9.5px;font-weight:800;color:#9D174D;letter-spacing:0.04em;">② Reels Boost / Adlets</div>
+            <div style="font-size:9.5px;color:var(--text-active);line-height:1.4;">크리에이터 오가닉 릴스 → <strong style="color:#9D174D;">광고 부스팅</strong>으로 도달 확장</div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:1px;">
+            <div style="font-size:9.5px;font-weight:800;color:#9D174D;letter-spacing:0.04em;">③ Partnership Ads (협업)</div>
+            <div style="font-size:9.5px;color:var(--text-active);line-height:1.4;">셀럽·인플루언서 계정 명의 광고 집행 → <strong style="color:#9D174D;">신뢰도·CTR 동반 상승</strong></div>
+          </div>
+        </div>
+
+        <!-- 클로징 멘트 -->
+        <div class="reveal d2" style="background:linear-gradient(135deg,#1A1C1F 0%,#2B2E33 100%);color:#fff;border-radius:8px;padding:12px 18px;flex-shrink:0;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-card);">
+          <span style="flex-shrink:0;display:inline-flex;width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.12);color:#fff;align-items:center;justify-content:center;font-size:14px;">🎯</span>
+          <div style="font-size:12px;line-height:1.5;letter-spacing:-0.01em;">
+            <strong style="color:#fff;">4월 검증 ROAS 600%대 소재 전략 지속 확대</strong> + <strong style="color:#FCD34D;">키비주얼 일관성 유지</strong>로 <span style="color:rgba(255,255,255,.85);">"광고가 아닌 트렌디한 콘텐츠"로 인식되도록 유도</span>
           </div>
         </div>
 
@@ -3739,7 +3776,7 @@
       data: {
         labels: ['공식몰', '무신사', '네이버'],
         datasets: [{
-          data: [477372829, 113079817, 91441510],
+          data: [1144281316, 348763313, 239048740],
           backgroundColor: [COL.accent, '#12B76A', '#F79009'],
           borderRadius: 4,
           categoryPercentage: 0.65,
@@ -3756,8 +3793,11 @@
           datalabels: {
             anchor: 'end', align: 'top', offset: 1,
             color: COL.text,
-            font: { size: 9, weight: 700, family: 'Pretendard, sans-serif' },
-            formatter: v => v.toLocaleString('ko-KR') + '원'
+            font: { size: 11, weight: 800, family: 'Pretendard, sans-serif' },
+            formatter: (v, ctx) => {
+              const roas = ['ROAS 615%', 'ROAS 754%', 'ROAS 348%'];
+              return roas[ctx.dataIndex] || '';
+            }
           }
         },
         scales: {
