@@ -88,6 +88,7 @@
       scroll-snap-align: start;
       scroll-snap-stop: always;
       width: 100%;
+      height: 100vh;
       min-height: 100vh;
       display: grid;
       align-content: center;
@@ -1424,35 +1425,22 @@
       opacity: 0;
     }
 
+    /* Stage wrapper used by auto-scale: preserves original layout proportions
+       and lets JS uniformly scale it down to fit the viewport. */
+    .slide.fit-vp .dense-grid {
+      /* Set a fixed virtual width so layout is stable; JS scales to fit. */
+    }
+
     @media (max-width: 900px) {
-      .two-col {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .numbers-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .flow {
-        grid-template-columns: 1fr;
-      }
-
-      .flow-arrow {
-        transform: rotate(90deg);
-        padding: 4px 0;
-      }
-
-      .board-mock {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-
-      .board-side {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-      }
+      .two-col { grid-template-columns: 1fr; gap: 32px; }
+      .numbers-grid { grid-template-columns: 1fr; gap: 8px; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+      .board-mock { grid-template-columns: 1fr; height: auto; }
+      .board-side { border-right: 0; border-bottom: 1px solid var(--border); }
+      .key-hint { display: none; }
+      .toc-item { flex-wrap: wrap; padding: 14px 16px; gap: 10px; }
+      .toc-item .desc { flex-basis: 100%; order: 3; }
     }
   
     /* ── Project-specific (MLB review) ── */
@@ -2037,7 +2025,7 @@
       </div>
 
       <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
-      <div class="slide-pg">01 / 07</div>
+      <div class="slide-pg">01 / 08</div>
     </section>
 
 
@@ -2063,20 +2051,26 @@
           <span class="desc">자사몰/무신사/네이버 · CP/TS 트렌드 · 3가지 구조적 성과</span>
           <span class="arrow">→</span>
         </div>
-        <div class="toc-item reveal d3" onclick="document.getElementById('s-ad-insight').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+        <div class="toc-item reveal d3" onclick="document.getElementById('s-q2-plan').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
           <span class="num">03</span>
+          <span class="title">Q2 잔여기간 실행 계획 — 인사이트 기반 액션</span>
+          <span class="desc">CP 라인업 확장 · TS PDP 강화 · 자사몰 모바일 CRM · 26FW 선제 준비</span>
+          <span class="arrow">→</span>
+        </div>
+        <div class="toc-item reveal d4" onclick="document.getElementById('s-ad-insight').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+          <span class="num">04</span>
           <span class="title">광고 인사이트 — 가설 검증 (The Logic)</span>
           <span class="desc">소재↔랜딩 일관성 · ASC 증대기여 · TS·CP 매출 변화</span>
           <span class="arrow">→</span>
         </div>
-        <div class="toc-item reveal d4" onclick="document.getElementById('s-affiliate').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
-          <span class="num">04</span>
+        <div class="toc-item reveal d5" onclick="document.getElementById('s-affiliate').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+          <span class="num">05</span>
           <span class="title">제휴몰 광고 인사이트 — 외부몰 확장 전략</span>
           <span class="desc">공식몰 모델 → 무신사·네이버 이식 · ROAS 500%대</span>
           <span class="arrow">→</span>
         </div>
         <div class="toc-item reveal d5" onclick="document.getElementById('s-may-june-plan').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
-          <span class="num">05</span>
+          <span class="num">06</span>
           <span class="title">5~6월 운영 타임보드</span>
           <span class="desc">5월 3.98억 카리나·TWS · 6월 3.6억 MLB WEEK·무진장</span>
           <span class="arrow">→</span>
@@ -2084,7 +2078,7 @@
       </div>
 
       <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
-      <div class="slide-pg">02 / 07</div>
+      <div class="slide-pg">02 / 08</div>
     </section>
 
 
@@ -2099,7 +2093,7 @@
           <div class="left" style="gap:4px;">
             <span class="eyebrow"><span class="dot"></span>온라인채널 26SS · 성과 대시보드</span>
             <h2 class="headline" style="font-size:clamp(20px,2.1vw,28px);margin:4px 0 2px;">카리나 캠페인이 CP를 드라이브 → CP·TS가 온라인 총매출 우상향 견인</h2>
-            <p class="lede" style="font-size:13px;line-height:1.45;margin:0;">이커머스(파랑) · 퍼포먼스마케팅(주황) 협업 구간이 매출 성장 구간과 정확히 일치 — 마일스톤 직후 월에 CP·총매출 동반 급등</p>
+            <p class="lede" style="font-size:13px;line-height:1.45;margin:0;max-width:none;white-space:nowrap;">이커머스(파랑) · 퍼포먼스마케팅(주황) 협업 구간이 매출 성장 구간과 정확히 일치 — 마일스톤 직후 월에 CP·총매출 동반 급등</p>
           </div>
         </div>
 
@@ -2132,11 +2126,15 @@
           <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-shrink:0;">
             <span style="font-size:10.5px;font-weight:800;color:#fff;background:var(--brand);padding:2px 8px;border-radius:4px;">01</span>
             <span style="font-size:13px;font-weight:800;color:var(--text-primary);">핵심 마일스톤 × CP · TS · 총매출 동반 성장</span>
-            <span style="margin-left:auto;display:flex;gap:14px;font-size:10.5px;color:var(--text-muted);">
-              <span><span style="display:inline-block;width:9px;height:9px;background:#D1D8E2;border-radius:2px;margin-right:4px;"></span>25년 매출</span>
-              <span><span style="display:inline-block;width:9px;height:9px;background:#FECACA;border-radius:2px;margin-right:4px;"></span>26년 매출</span>
+            <span style="margin-left:auto;display:flex;gap:10px;font-size:10px;color:var(--text-muted);flex-wrap:wrap;align-items:center;">
+              <span><span style="display:inline-block;width:9px;height:9px;background:#EEF1FF;border:1.5px solid var(--accent);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>이커머스팀</span>
+              <span><span style="display:inline-block;width:9px;height:9px;background:#FEF3C7;border:1.5px solid #F79009;border-radius:2px;margin-right:4px;vertical-align:middle;"></span>퍼포먼스마케팅팀</span>
+              <span><span style="display:inline-block;width:9px;height:9px;background:#DC2626;border-radius:50%;margin-right:4px;vertical-align:middle;"></span>카리나 마일스톤</span>
+              <span><span style="display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:8px solid #7C3AED;margin-right:4px;vertical-align:middle;"></span>Q2 프로모션</span>
+              <span><span style="display:inline-block;width:9px;height:9px;background:#D1D8E2;border-radius:2px;margin-right:4px;vertical-align:middle;"></span>25년 총매출</span>
+              <span><span style="display:inline-block;width:9px;height:9px;background:#FECACA;border-radius:2px;margin-right:4px;vertical-align:middle;"></span>26년 총매출</span>
               <span><span style="display:inline-block;width:14px;height:2px;background:#DC2626;margin-right:4px;vertical-align:middle;"></span>CP 볼캡</span>
-              <span><span style="display:inline-block;width:14px;height:2px;background:#D97706;margin-right:4px;vertical-align:middle;border-top:1.5px dashed #D97706;"></span>TS 티셔츠</span>
+              <span><span style="display:inline-block;width:14px;height:0;margin-right:4px;vertical-align:middle;border-top:1.8px dashed #D97706;"></span>TS 티셔츠</span>
             </span>
           </div>
 
@@ -2146,7 +2144,7 @@
             <div style="position:relative;height:28px;background:var(--bg-subtle);border-radius:5px;">
               <span style="position:absolute;left:5%;top:50%;transform:translateY(-50%);background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">2월 봄캠페인</span>
               <span style="position:absolute;left:25%;top:50%;transform:translateY(-50%);background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">3월 에디션 1·2차 DROP</span>
-              <span style="position:absolute;left:54%;top:50%;transform:translateY(-50%);background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">5월 카리나 2차 기획전 · TWS</span>
+              <span style="position:absolute;left:54%;top:50%;transform:translateY(-50%);background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">5월 카리나 썸머 캠페인</span>
               <span style="position:absolute;left:84%;top:50%;transform:translateY(-50%);background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">6월 무진장 블프</span>
             </div>
             <div style="font-size:11px;font-weight:700;color:#F79009;padding:6px 0;display:flex;align-items:center;">퍼포먼스</div>
@@ -2155,6 +2153,47 @@
               <span style="position:absolute;left:24%;top:50%;transform:translateY(-50%);background:#FEF3C7;color:#B45309;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">에디션 CRM 리타겟</span>
               <span style="position:absolute;left:48%;top:50%;transform:translateY(-50%);background:#FEF3C7;color:#B45309;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">소두볼캡 · 자사몰 히든 CRM</span>
               <span style="position:absolute;left:78%;top:50%;transform:translateY(-50%);background:#FEF3C7;color:#B45309;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;">MLB WEEK · 네이버 · 무진장</span>
+            </div>
+          </div>
+
+          <!-- 마일스톤 · Q2 프로모션 마커 row -->
+          <div style="display:grid;grid-template-columns:80px 1fr;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div></div>
+            <div style="position:relative;height:36px;">
+              <!-- 카리나 마일스톤 (red dots) -->
+              <div style="position:absolute;left:5%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.15);"></span>
+                <span style="font-size:9px;font-weight:700;color:#B4251D;white-space:nowrap;">봄 캠페인</span>
+              </div>
+              <div style="position:absolute;left:22%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.15);"></span>
+                <span style="font-size:9px;font-weight:700;color:#B4251D;white-space:nowrap;">에디션 1차</span>
+              </div>
+              <div style="position:absolute;left:32%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.15);"></span>
+                <span style="font-size:9px;font-weight:700;color:#B4251D;white-space:nowrap;">에디션 2차</span>
+              </div>
+              <div style="position:absolute;left:54%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.15);"></span>
+                <span style="font-size:9px;font-weight:700;color:#B4251D;white-space:nowrap;">여름 1차</span>
+              </div>
+              <div style="position:absolute;left:66%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.15);"></span>
+                <span style="font-size:9px;font-weight:700;color:#B4251D;white-space:nowrap;">여름 2차</span>
+              </div>
+              <!-- Q2 프로모션 (purple triangles) -->
+              <div style="position:absolute;left:76%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #7C3AED;"></span>
+                <span style="font-size:9px;font-weight:700;color:#6D28D9;white-space:nowrap;">MLB WEEK</span>
+              </div>
+              <div style="position:absolute;left:84%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #7C3AED;"></span>
+                <span style="font-size:9px;font-weight:700;color:#6D28D9;white-space:nowrap;">네이버블프</span>
+              </div>
+              <div style="position:absolute;left:92%;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <span style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #7C3AED;"></span>
+                <span style="font-size:9px;font-weight:700;color:#6D28D9;white-space:nowrap;">무진장</span>
+              </div>
             </div>
           </div>
 
@@ -2172,92 +2211,10 @@
           </div>
         </div>
 
-        <!-- Event timeline (Gantt) -->
-        <div class="panel compact reveal d3" style="padding:10px 16px;flex-shrink:0;">
-          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
-            <span style="font-size:10.5px;font-weight:800;color:#fff;background:var(--brand);padding:2px 8px;border-radius:4px;">02</span>
-            <span style="font-size:13px;font-weight:800;color:var(--text-primary);">5~6월 핵심 캠페인 타임라인</span>
-            <span style="margin-left:auto;font-size:10.5px;color:var(--text-muted);font-style:italic;">총 31.1억 목표 · 5/14 → 6/28</span>
-          </div>
-
-          <div class="gantt" style="grid-template-columns:200px 1fr;">
-            <!-- Date axis -->
-            <div></div>
-            <div class="gantt-axis">
-              <span class="gantt-axis-tick" style="left:0%;">5/14</span>
-              <span class="gantt-axis-tick" style="left:17.8%;">5/22</span>
-              <span class="gantt-axis-tick" style="left:40%;">6/1</span>
-              <span class="gantt-axis-tick" style="left:55.6%;">6/8</span>
-              <span class="gantt-axis-tick" style="left:68.9%;">6/15</span>
-              <span class="gantt-axis-tick" style="left:88.9%;">6/22</span>
-              <span class="gantt-axis-tick" style="left:100%;">6/28</span>
-            </div>
-
-            <!-- 카리나 썸머 2차 -->
-            <div class="gantt-label" style="font-size:11px;">
-              <span class="ic-dot" style="background:#7C3AED;"></span>
-              <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-weight:800;color:var(--text-primary);">카리나 썸머 2차</span>
-                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">자사몰·무신사·29CM · 10억</span>
-              </div>
-            </div>
-            <div class="gantt-track">
-              <div class="gantt-bar purple" style="left:0%;width:53.3%;">5/14 - 6/7 · 5만원 포카 + 무신사 특별기획전</div>
-            </div>
-
-            <!-- MLB WEEK -->
-            <div class="gantt-label" style="font-size:11px;">
-              <span class="ic-dot" style="background:var(--accent);"></span>
-              <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-weight:800;color:var(--text-primary);">MLB WEEK</span>
-                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">자사몰 단독 · 6억</span>
-              </div>
-            </div>
-            <div class="gantt-track">
-              <div class="gantt-bar blue" style="left:24.4%;width:28.9%;">5/25 - 6/7 · 자사몰 최초 단독 프리 3-7일</div>
-            </div>
-
-            <!-- 네이버 썸머블프 -->
-            <div class="gantt-label" style="font-size:11px;">
-              <span class="ic-dot" style="background:#F79009;"></span>
-              <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-weight:800;color:var(--text-primary);">네이버 썸머블프</span>
-                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">네이버 · 6.1억</span>
-              </div>
-            </div>
-            <div class="gantt-track">
-              <div class="gantt-bar amber" style="left:55.6%;width:28.9%;">6/8 - 6/21 · 슈퍼적립 + 알림쿠폰 5%→7%</div>
-            </div>
-
-            <!-- 무진장 블프 -->
-            <div class="gantt-label" style="font-size:11px;">
-              <span class="ic-dot" style="background:#12B76A;"></span>
-              <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-weight:800;color:var(--text-primary);">무진장 블프</span>
-                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">무신사 · 8억</span>
-              </div>
-            </div>
-            <div class="gantt-track">
-              <div class="gantt-bar green" style="left:68.9%;width:31.1%;">6/14 - 6/28 · 시그니처 특가 + 애프터 무진장</div>
-            </div>
-
-            <!-- SSF 스페셜 쇼핑위크 -->
-            <div class="gantt-label" style="font-size:11px;">
-              <span class="ic-dot" style="background:var(--brand);"></span>
-              <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-weight:800;color:var(--text-primary);">SSF 스페셜 쇼핑위크</span>
-                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">SSF · 1억</span>
-              </div>
-            </div>
-            <div class="gantt-track no-border">
-              <div class="gantt-bar dark" style="left:71%;width:29%;">6월 중 · TS·슈즈류 쿠폰 + 이월 품번</div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
-      <div class="slide-pg">03 / 07</div>
+      <div class="slide-pg">03 / 08</div>
     </section>
 
 
@@ -2271,8 +2228,7 @@
         <div class="slide-titlebar reveal" style="margin-bottom:0;">
           <div class="left" style="gap:4px;">
             <span class="eyebrow"><span class="dot"></span>채널별 매출 · 카테고리 트렌드 · 핵심 인사이트</span>
-            <h2 class="headline" style="font-size:clamp(20px,2.1vw,28px);margin:4px 0 2px;">무신사 폭발 성장이 전체를 견인 — 자사몰 5월 반등으로 구조적 회복 국면</h2>
-            <p class="lede" style="font-size:13px;line-height:1.45;margin:0;">자사몰 CRM 강화로 5월(~7일) +5% 턴어라운드 · 무신사 4월 +95% · 네이버 5월 +78% 급등</p>
+            <h2 class="headline" style="font-size:clamp(20px,2.1vw,28px);margin:4px 0 2px;max-width:none;white-space:nowrap;">자사몰 CRM 강화로 5월(~7일) +5% 턴어라운드 · 무신사 5월 +65% · 네이버 5월 +78%</h2>
           </div>
         </div>
 
@@ -2326,6 +2282,13 @@
           </div>
         </div>
 
+        <!-- Sub-section title: 카테고리 매출 트렌드 -->
+        <div class="reveal d2" style="display:flex;align-items:baseline;gap:10px;flex-shrink:0;margin-top:2px;">
+          <span style="font-size:10.5px;font-weight:800;color:#fff;background:var(--brand);padding:2px 8px;border-radius:4px;">03</span>
+          <span style="font-size:13px;font-weight:800;color:var(--text-primary);letter-spacing:-0.01em;">카테고리 매출 트렌드 — CP 3·4월 급등 (+63%/+71%) · TS 4월 PLC 우상향 진입 · 두 카테고리 모두 성장 가속</span>
+          <span style="margin-left:auto;font-size:10.5px;color:var(--text-muted);font-style:italic;white-space:nowrap;">총매출 대비 CP 비중 40% 확대 · TS는 본격 무더위 진입 전 수요 선행 포착</span>
+        </div>
+
         <!-- Category + insights row -->
         <div class="reveal d2 fv-grow" style="display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:12px;min-height:0;">
           <div class="panel compact fv-col" style="padding:10px 14px;">
@@ -2355,37 +2318,282 @@
           <!-- 3 Insight cards -->
           <div class="panel compact fv-col" style="padding:10px 14px;">
             <div style="font-size:12px;font-weight:800;color:var(--text-primary);flex-shrink:0;">
-              <span style="color:var(--accent);">04</span> 핵심 인사이트 — 3가지 구조적 성과
+              <span style="color:var(--accent);">04</span> 핵심 인사이트 — 성과 원인 분석
             </div>
-            <p style="font-size:10.5px;color:var(--text-muted);font-style:italic;margin-top:2px;margin-bottom:6px;flex-shrink:0;">카테고리 집중 · 신규 고객 유입 · 퍼널 효율화</p>
+            <p style="font-size:10.5px;color:var(--text-muted);font-style:italic;margin-top:2px;margin-bottom:6px;flex-shrink:0;">카테고리 집중 · 신규 고객 유입 · 퍼널 효율화 — 이커머스×퍼마 협업이 직접 원인</p>
             <div class="fv-grow" style="display:grid;gap:6px;min-height:0;overflow:hidden;">
+
               <div style="padding:7px 10px;background:#FEECEB;border-radius:5px;border-left:3px solid #DC2626;">
-                <div style="font-size:10px;font-weight:800;color:#B4251D;letter-spacing:0.04em;">CP 카테고리</div>
-                <div style="font-size:11.5px;font-weight:800;color:var(--text-primary);margin-top:2px;line-height:1.3;">카리나 PICK → CP 비중 23% → 40% (2배)</div>
-                <div style="font-size:10px;color:var(--text-active);line-height:1.45;margin-top:2px;">무신사 모자 랭킹 1위 · META ROAS 668% (포토카드 소재)</div>
+                <div style="font-size:10px;font-weight:800;color:#B4251D;letter-spacing:0.04em;">① CP 카테고리</div>
+                <div style="font-size:11.5px;font-weight:800;color:var(--text-primary);margin-top:2px;line-height:1.3;">카리나 PICK → CP 비중 23% → 40% (2배 확대)</div>
+                <div style="display:grid;gap:2px;margin-top:4px;">
+                  <div style="font-size:10px;color:var(--text-active);line-height:1.4;">
+                    <span style="display:inline-block;font-size:9px;font-weight:800;color:var(--accent);background:var(--accent-soft);padding:1px 5px;border-radius:3px;margin-right:5px;">이커머스</span>
+                    전 채널 릴리즈 + 기획전 구좌 확보
+                  </div>
+                  <div style="font-size:10px;color:var(--text-active);line-height:1.4;">
+                    <span style="display:inline-block;font-size:9px;font-weight:800;color:#B45309;background:#FEF3C7;padding:1px 5px;border-radius:3px;margin-right:5px;">퍼마</span>
+                    META 대규모 도달 338만명 · ROAS 668%
+                  </div>
+                </div>
               </div>
+
               <div style="padding:7px 10px;background:#FEF3C7;border-radius:5px;border-left:3px solid #F79009;">
-                <div style="font-size:10px;font-weight:800;color:#B45309;letter-spacing:0.04em;">에디션 DROP</div>
-                <div style="font-size:11.5px;font-weight:800;color:var(--text-primary);margin-top:2px;line-height:1.3;">1·2차 평균 38초 완판 (역대 최단기)</div>
-                <div style="font-size:10px;color:var(--text-active);line-height:1.45;margin-top:2px;">25FW 대비 15초 단축 · 자사몰 신규가입 +52% (6,865명)</div>
+                <div style="font-size:10px;font-weight:800;color:#B45309;letter-spacing:0.04em;">② 에디션 DROP</div>
+                <div style="font-size:11.5px;font-weight:800;color:var(--text-primary);margin-top:2px;line-height:1.3;">1·2차 평균 38초 완판 — 역대 최단기 매출</div>
+                <div style="display:grid;gap:2px;margin-top:4px;">
+                  <div style="font-size:10px;color:var(--text-active);line-height:1.4;">
+                    <span style="display:inline-block;font-size:9px;font-weight:800;color:var(--accent);background:var(--accent-soft);padding:1px 5px;border-radius:3px;margin-right:5px;">이커머스</span>
+                    자사몰·무신사 DROP 구좌 선정
+                  </div>
+                  <div style="font-size:10px;color:var(--text-active);line-height:1.4;">
+                    <span style="display:inline-block;font-size:9px;font-weight:800;color:#B45309;background:#FEF3C7;padding:1px 5px;border-radius:3px;margin-right:5px;">퍼마</span>
+                    CRM 카톡 발송 + 재입고 알림 리타겟
+                  </div>
+                </div>
               </div>
+
               <div style="padding:7px 10px;background:var(--accent-soft);border-radius:5px;border-left:3px solid var(--accent);">
-                <div style="font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.04em;">신규 고객</div>
+                <div style="font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.04em;">③ 신규 고객</div>
                 <div style="font-size:11.5px;font-weight:800;color:var(--text-primary);margin-top:2px;line-height:1.3;">자사몰 남성 비중 50% → 76% (+26%p)</div>
-                <div style="font-size:10px;color:var(--text-active);line-height:1.45;margin-top:2px;">무신사 30대 남성 29%→32% · META 35-54세 남성 +162% (3→4월)</div>
+                <div style="display:grid;gap:2px;margin-top:4px;">
+                  <div style="font-size:10px;color:var(--text-active);line-height:1.4;">
+                    <span style="display:inline-block;font-size:9px;font-weight:800;color:var(--accent);background:#fff;padding:1px 5px;border-radius:3px;margin-right:5px;">이커머스</span>
+                    카리나·준·남성 VP존 별도 연출
+                  </div>
+                  <div style="font-size:10px;color:var(--text-active);line-height:1.4;">
+                    <span style="display:inline-block;font-size:9px;font-weight:800;color:#B45309;background:#FEF3C7;padding:1px 5px;border-radius:3px;margin-right:5px;">퍼마</span>
+                    ASC 이미지 배너 35-54세 남성 타겟 집중
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
 
       <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
-      <div class="slide-pg">04 / 07</div>
+      <div class="slide-pg">04 / 08</div>
     </section>
 
 
     <!-- =========================================================
-       05. 광고 인사이트 (KPI + STEP 1 + STEP 2 통합)
+       05. Q2 잔여기간 실행 계획 (향후 계획)
+    ========================================================= -->
+    <section class="slide fit-vp" id="s-q2-plan" data-label="향후 계획">
+      <div class="dense-grid" style="max-width:1320px;">
+
+        <!-- Header -->
+        <div class="slide-titlebar reveal" style="margin-bottom:0;">
+          <div class="left" style="gap:4px;">
+            <span class="eyebrow"><span class="dot"></span>Q2 잔여기간 실행 계획 — 인사이트 기반 액션</span>
+            <h2 class="headline" style="font-size:clamp(20px,2.1vw,28px);margin:4px 0 2px;max-width:none;white-space:nowrap;">카리나 썸머 2차(5/14) 마무리 → MLB WEEK 자사몰 보완 → 무진장으로 Q2 마감</h2>
+            <p class="lede" style="font-size:13px;line-height:1.45;margin:0;max-width:none;">인사이트 ①②③를 Q2 남은 기간에 즉시 연결 — CP 라인업 확장 · TS 기능성 드라이브 · 자사몰 모바일 CRM 강화</p>
+          </div>
+        </div>
+
+        <!-- 3-col main: 이커머스팀 · 퍼포먼스마케팅팀 · Q핏 볼캡 신컬러 -->
+        <div class="reveal d1" style="display:grid;grid-template-columns:1.15fr 1.15fr 1fr;gap:12px;flex:1 1 auto;min-height:0;align-items:stretch;">
+
+          <!-- 이커머스팀 4-action panel -->
+          <div class="panel compact" style="padding:0;overflow:hidden;background:linear-gradient(180deg,#EEF1FF 0%,#fff 60%);display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:var(--accent);color:#fff;flex-shrink:0;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.18);display:inline-flex;align-items:center;justify-content:center;font-size:13px;">🖥</span>
+                <span style="font-size:13px;font-weight:800;letter-spacing:-0.01em;">이커머스팀</span>
+              </div>
+              <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:0.06em;">CHANNEL · 기획</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;padding:12px;flex:1;min-height:0;justify-content:space-between;">
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #DCE3FF;border-radius:6px;box-shadow:0 1px 2px rgba(61,90,254,.04);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">1</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">CP 라인업 확장</div>
+                  <div style="color:var(--text-active);margin-top:1px;">소두볼캡(SBL) 카리나 스타일링 전용 런칭 · <strong style="color:var(--accent);">Q핏 어더컬러(버건디 600pcs/네이비 1,000pcs)</strong> 8/2 런칭 · 최대 2주 앞당기기 검토</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #DCE3FF;border-radius:6px;box-shadow:0 1px 2px rgba(61,90,254,.04);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">2</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">TS PDP 강화</div>
+                  <div style="color:var(--text-active);margin-top:1px;"><strong style="color:var(--accent);">기능성 플래그(냉감/UV차단) 배지</strong> 전 채널 적용 · 카리나 TS 전용 기획전 구좌 확보</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #DCE3FF;border-radius:6px;box-shadow:0 1px 2px rgba(61,90,254,.04);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">3</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">자사몰 모바일 CRM</div>
+                  <div style="color:var(--text-active);margin-top:1px;">고관여 남성 타겟 CRM 캠페인 지속 · <strong style="color:var(--accent);">MLB WEEK 자사몰 단독 프리 3-7일 최초 운영</strong>(5/25~)</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #DCE3FF;border-radius:6px;box-shadow:0 1px 2px rgba(61,90,254,.04);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">4</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">26FW 선제 준비</div>
+                  <div style="color:var(--text-active);margin-top:1px;">온라인 단독 Q핏 발주 확정 · 자사몰 Q핏 라인업 추가 확대</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 퍼포먼스마케팅팀 4-action panel -->
+          <div class="panel compact" style="padding:0;overflow:hidden;background:linear-gradient(180deg,#FEF6E0 0%,#fff 60%);display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:#F79009;color:#fff;flex-shrink:0;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center;font-size:13px;">📈</span>
+                <span style="font-size:13px;font-weight:800;letter-spacing:-0.01em;">퍼포먼스마케팅팀</span>
+              </div>
+              <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:0.06em;">MEDIA · 타겟</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;padding:12px;flex:1;min-height:0;justify-content:space-between;">
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #FCD9A4;border-radius:6px;box-shadow:0 1px 2px rgba(247,144,9,.05);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#F79009;color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">1</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">TS 기능성 A/B 테스트</div>
+                  <div style="color:var(--text-active);margin-top:1px;">냉감·쿨링 vs 디자인 소구 비교 집행 · <strong style="color:#B45309;">카리나 TS 착장 소재 고효율 확인 → 집중 운영</strong></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #FCD9A4;border-radius:6px;box-shadow:0 1px 2px rgba(247,144,9,.05);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#F79009;color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">2</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">CP 인플루언서 씨딩 확대</div>
+                  <div style="color:var(--text-active);margin-top:1px;">볼캡 CP 고효율 소재 중심 씨딩 확대 · GWP·포토카드 META 지속 <strong style="color:#B45309;">(ROAS 400%+ 목표)</strong></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #FCD9A4;border-radius:6px;box-shadow:0 1px 2px rgba(247,144,9,.05);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#F79009;color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">3</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">35-54세 남성 타겟 강화</div>
+                  <div style="color:var(--text-active);margin-top:1px;">ASC 이미지 배너 4월 매출 급증 구간 유지 · <strong style="color:#B45309;">무신사 패션페스타(5/18-27)</strong> 빅퍼널 연계</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;padding:7px 9px;background:#fff;border:1px solid #FCD9A4;border-radius:6px;box-shadow:0 1px 2px rgba(247,144,9,.05);">
+                <span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#F79009;color:#fff;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">4</span>
+                <div style="font-size:10.5px;line-height:1.45;">
+                  <div style="font-weight:800;color:var(--text-primary);">무진장 블프 퍼널 구성</div>
+                  <div style="color:var(--text-active);margin-top:1px;"><strong style="color:#B45309;">6/14 무진장(목표 8억)</strong> 대비 사전 리타겟·CRM 설계 · 네이버 썸머블프(6/8-21) 슈퍼적립 연계</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q핏 볼캡 신컬러 panel (image) -->
+          <div class="panel compact" style="padding:10px 12px;display:flex;flex-direction:column;background:#fff;min-height:0;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;flex-shrink:0;">
+              <span style="font-size:10.5px;font-weight:800;color:var(--brand);background:var(--bg-chip);padding:2px 7px;border-radius:4px;">26FW 신상품</span>
+              <span style="font-size:10px;font-weight:700;color:#B4251D;background:#FEECEB;padding:2px 7px;border-radius:4px;">런칭 예정 8/2</span>
+            </div>
+            <div style="font-size:11.5px;font-weight:800;color:var(--text-primary);letter-spacing:-0.01em;flex-shrink:0;line-height:1.3;">&lt;Q핏 볼캡 어더컬러&gt; — 무신사·자사몰 단독진행</div>
+            <div style="font-size:9.5px;color:var(--text-muted);font-style:italic;margin-top:2px;margin-bottom:6px;flex-shrink:0;">현재 런칭 예상 일정 8/2 (앞당길 시 최대 2주)</div>
+
+            <div style="flex:1;min-height:0;background:#F7F8FA;border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+              <img src="images/slide5_qfit_newcolor.png" alt="Q핏 볼캡 신컬러" style="width:100%;height:100%;object-fit:contain;display:block;">
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px;flex-shrink:0;">
+              <div style="background:#FEECEB;border-left:2.5px solid #7B1E1E;border-radius:3px;padding:3px 6px;font-size:9.5px;font-weight:700;color:#7B1E1E;">버건디 600pcs 발주</div>
+              <div style="background:#E0E7FF;border-left:2.5px solid #1E2A52;border-radius:3px;padding:3px 6px;font-size:9.5px;font-weight:700;color:#1E2A52;">네이비 1,000pcs 발주</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 협업 인사이트 배너 -->
+        <div class="reveal d1" style="background:linear-gradient(90deg,var(--accent-soft) 0%,#FEF3C7 100%);border:1px solid #DCE3FF;border-radius:6px;padding:7px 14px;font-size:11px;font-weight:700;color:var(--text-primary);text-align:center;flex-shrink:0;letter-spacing:-0.01em;">
+          이커머스(채널·기획) × 퍼포먼스마케팅(소재·타겟·미디어) 동시 액션으로 Q2 마지막 한 달 매출·효율 동반 견인
+        </div>
+
+        <!-- 5~6월 핵심 캠페인 타임라인 (Gantt) -->
+        <div class="panel compact reveal d2" style="padding:10px 16px;flex-shrink:0;">
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+            <span style="font-size:10.5px;font-weight:800;color:#fff;background:var(--brand);padding:2px 8px;border-radius:4px;">02</span>
+            <span style="font-size:13px;font-weight:800;color:var(--text-primary);">5~6월 핵심 캠페인 타임라인</span>
+            <span style="margin-left:auto;font-size:10.5px;color:var(--text-muted);font-style:italic;">총 31.7억 목표 · 5/14 → 6/28</span>
+          </div>
+
+          <div class="gantt" style="grid-template-columns:180px 1fr;">
+            <!-- Date axis -->
+            <div></div>
+            <div class="gantt-axis">
+              <span class="gantt-axis-tick" style="left:0%;">5/14</span>
+              <span class="gantt-axis-tick" style="left:17.8%;">5/22</span>
+              <span class="gantt-axis-tick" style="left:40%;">6/1</span>
+              <span class="gantt-axis-tick" style="left:55.6%;">6/8</span>
+              <span class="gantt-axis-tick" style="left:68.9%;">6/15</span>
+              <span class="gantt-axis-tick" style="left:88.9%;">6/22</span>
+              <span class="gantt-axis-tick" style="left:100%;">6/28</span>
+            </div>
+
+            <!-- 카리나 캠페인 -->
+            <div class="gantt-label" style="font-size:11px;">
+              <span class="ic-dot" style="background:#7C3AED;"></span>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-weight:800;color:var(--text-primary);">카리나 캠페인</span>
+                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">PERFORMANCE · ECOM</span>
+              </div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar purple" style="left:0%;width:53.3%;">5/14 - 6/7 · 5만원 포카 + 무신사 특별기획전</div>
+            </div>
+
+            <!-- MLB WEEK -->
+            <div class="gantt-label" style="font-size:11px;">
+              <span class="ic-dot" style="background:var(--accent);"></span>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-weight:800;color:var(--text-primary);">MLB WEEK</span>
+                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">자사몰 단독</span>
+              </div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar blue" style="left:24.4%;width:28.9%;">5/25 - 6/7 · 자사몰 최초 단독 프리 3-7일</div>
+            </div>
+
+            <!-- 네이버 썸머블프 -->
+            <div class="gantt-label" style="font-size:11px;">
+              <span class="ic-dot" style="background:#F79009;"></span>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-weight:800;color:var(--text-primary);">네이버 썸머블프</span>
+                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">네이버</span>
+              </div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar amber" style="left:55.6%;width:28.9%;">6/8 - 6/21 · 슈퍼적립 + 알림쿠폰 5%→7%</div>
+            </div>
+
+            <!-- 무진장 블프 -->
+            <div class="gantt-label" style="font-size:11px;">
+              <span class="ic-dot" style="background:#12B76A;"></span>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-weight:800;color:var(--text-primary);">무진장 블프</span>
+                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">무신사 페스티벌</span>
+              </div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar green" style="left:68.9%;width:31.1%;">6/14 - 6/28 · 시그니처 특가 + 애프터 무진장</div>
+            </div>
+
+            <!-- SSF 스페셜 쇼핑위크 -->
+            <div class="gantt-label" style="font-size:11px;">
+              <span class="ic-dot" style="background:var(--brand);"></span>
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-weight:800;color:var(--text-primary);">SSF 스페셜 쇼핑위크</span>
+                <span style="font-size:9.5px;color:var(--text-muted);font-weight:600;">SSF</span>
+              </div>
+            </div>
+            <div class="gantt-track no-border">
+              <div class="gantt-bar dark" style="left:71%;width:29%;">6월 중 · TS·슈즈류 쿠폰 + 이월 품번</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
+      <div class="slide-pg">05 / 08</div>
+    </section>
+
+
+    <!-- =========================================================
+       06. 광고 인사이트 (KPI + STEP 1 + STEP 2 통합)
     ========================================================= -->
     <section class="slide fit-vp" id="s-ad-insight" data-label="광고 인사이트">
       <div class="dense-grid" style="max-width:1280px;">
@@ -2455,8 +2663,8 @@
                 → 히든페이지·광고 소재 일관성 유지 시 킬러 아이템 중심 브랜딩 강화 인사이트 확보
               </div>
 
-              <!-- 4 thumbnails -->
-              <div class="fv-grow" style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:6px;">
+              <!-- 3 thumbnails -->
+              <div class="fv-grow" style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:6px;">
                 <div class="thumb fv-col" style="height:100%;">
                   <img src="images/slide1_그림_43_frame1.png" alt="CP 소두핏" style="flex:1;min-height:0;width:100%;object-fit:cover;">
                   <span class="cap" style="font-size:9.5px;padding:3px 2px;flex-shrink:0;">CP 소두핏</span>
@@ -2468,10 +2676,6 @@
                 <div class="thumb fv-col" style="height:100%;">
                   <img src="images/slide1_편안한소재.png" alt="BASIC & COMFY" style="flex:1;min-height:0;width:100%;object-fit:cover;">
                   <span class="cap" style="font-size:9.5px;padding:3px 2px;flex-shrink:0;">BASIC &amp; COMFY</span>
-                </div>
-                <div class="thumb fv-col" style="height:100%;">
-                  <img src="images/slide1_그림_49.png" alt="ALL DAY COOL" style="flex:1;min-height:0;width:100%;object-fit:cover;">
-                  <span class="cap" style="font-size:9.5px;padding:3px 2px;flex-shrink:0;">ALL DAY COOL</span>
                 </div>
               </div>
             </div>
@@ -2532,6 +2736,7 @@
                     <th style="padding:6px 10px;">3월 매출</th>
                     <th style="padding:6px 10px;">4월 매출</th>
                     <th style="padding:6px 10px;">증감</th>
+                    <th style="padding:6px 10px;">증감율</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2540,24 +2745,35 @@
                     <td style="padding:6px 10px;">344,000</td>
                     <td style="padding:6px 10px;">23,185,000</td>
                     <td class="pos" style="padding:6px 10px;">+22,841,000</td>
+                    <td class="pos" style="padding:6px 10px;">+6,639%</td>
                   </tr>
                   <tr>
                     <td style="padding:6px 10px;">CP (볼캡)</td>
                     <td style="padding:6px 10px;">13,174,000</td>
                     <td style="padding:6px 10px;">10,281,000</td>
                     <td class="neg" style="padding:6px 10px;">-2,893,000</td>
+                    <td class="neg" style="padding:6px 10px;">-22%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:6px 10px;">SX</td>
+                    <td style="padding:6px 10px;">5,251,000</td>
+                    <td style="padding:6px 10px;">903,000</td>
+                    <td class="neg" style="padding:6px 10px;">-4,348,000</td>
+                    <td class="neg" style="padding:6px 10px;">-83%</td>
                   </tr>
                   <tr>
                     <td style="padding:6px 10px;">WJ</td>
                     <td style="padding:6px 10px;">2,537,000</td>
                     <td style="padding:6px 10px;">1,680,000</td>
                     <td class="neg" style="padding:6px 10px;">-857,000</td>
+                    <td class="neg" style="padding:6px 10px;">-34%</td>
                   </tr>
                   <tr>
                     <td style="padding:6px 10px;">WP</td>
                     <td style="padding:6px 10px;">139,000</td>
                     <td style="padding:6px 10px;">1,001,000</td>
                     <td class="pos" style="padding:6px 10px;">+862,000</td>
+                    <td class="pos" style="padding:6px 10px;">+620%</td>
                   </tr>
                 </tbody>
               </table>
@@ -2567,7 +2783,7 @@
       </div>
 
       <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
-      <div class="slide-pg">05 / 07</div>
+      <div class="slide-pg">06 / 08</div>
     </section>
 
 
@@ -2586,8 +2802,8 @@
           </div>
         </div>
 
-        <!-- 4-panel 2x2 grid -->
-        <div class="reveal d1 fv-grow" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;min-height:0;">
+        <!-- 4-panel 2x2 grid (top row shorter, bottom row taller for images) -->
+        <div class="reveal d1 fv-grow" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:0.82fr 1.18fr;gap:16px;min-height:0;">
 
           <!-- ① 채널별 매출 × ROAS -->
           <div class="panel compact fv-col" style="padding:14px 18px;">
@@ -2636,12 +2852,12 @@
             </div>
             <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:3px;margin-bottom:10px;flex-shrink:0;">이미지형 vs 컬렉션형 — 컬렉션형 도입 시 효율 큰 폭 개선</p>
             <div class="fv-grow" style="display:grid;grid-template-columns:1fr 1fr 1.7fr;gap:12px;align-items:start;min-height:0;">
-              <div class="ad-thumb fv-col" style="height:100%;align-self:start;">
-                <img src="images/slide2_그림_67.png" alt="무신사 게재면" style="flex:1;min-height:0;width:100%;object-fit:cover;">
+              <div class="ad-thumb fv-col" style="height:100%;align-self:stretch;background:#F7F8FA;">
+                <img src="images/slide2_그림_67.png" alt="무신사 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
                 <span class="cap" style="font-size:10.5px;padding:5px 4px;flex-shrink:0;">무신사</span>
               </div>
-              <div class="ad-thumb fv-col" style="height:100%;align-self:start;">
-                <img src="images/slide2_그림_68.png" alt="네이버 게재면" style="flex:1;min-height:0;width:100%;object-fit:cover;">
+              <div class="ad-thumb fv-col" style="height:100%;align-self:stretch;background:#F7F8FA;">
+                <img src="images/slide2_그림_68.png" alt="네이버 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
                 <span class="cap" style="font-size:10.5px;padding:5px 4px;flex-shrink:0;">네이버</span>
               </div>
               <table class="data-table" style="font-size:11.5px;align-self:start;">
@@ -2693,12 +2909,12 @@
             <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:3px;margin-bottom:10px;flex-shrink:0;">공식몰 USP 전략을 무신사에 이식 — 트렌디 무드 &amp; 핏 강조</p>
 
             <!-- Main row: USP flow (left) + Q핏 image (right) -->
-            <div class="fv-grow" style="display:grid;grid-template-columns:1fr 120px;gap:12px;min-height:0;align-items:stretch;">
+            <div class="fv-grow" style="display:grid;grid-template-columns:1fr 160px;gap:12px;min-height:0;align-items:stretch;">
               <!-- Left: USP flow -->
               <div class="usp-flow" style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:6px;align-items:stretch;">
                 <div class="usp-box fv-col" style="padding:10px 12px;justify-content:center;">
                   <span class="lab" style="font-size:10px;">공식몰 USP</span>
-                  <span class="val" style="font-size:12px;line-height:1.4;margin-top:4px;">CP 소두핏<br/>RN 가벼움</span>
+                  <span class="val" style="font-size:12px;line-height:1.4;margin-top:4px;">CP 소두핏</span>
                   <span style="font-size:10px;color:var(--text-muted);font-weight:600;margin-top:4px;">기능성 강조</span>
                 </div>
                 <span class="usp-arrow" style="font-size:16px;align-self:center;">→</span>
@@ -2715,8 +2931,8 @@
                 </div>
               </div>
               <!-- Right: Q핏 model image -->
-              <div class="ad-thumb fv-col" style="align-self:stretch;">
-                <img src="images/slide2_그림_70.png" alt="Q핏 볼캡 게재면" style="flex:1;min-height:0;width:100%;object-fit:cover;object-position:center top;">
+              <div class="ad-thumb fv-col" style="align-self:stretch;background:#F7F8FA;">
+                <img src="images/slide2_그림_70.png" alt="Q핏 볼캡 게재면" style="flex:1;min-height:0;width:100%;height:100%;object-fit:contain;background:#F7F8FA;">
                 <span class="cap" style="font-size:10.5px;padding:5px 4px;flex-shrink:0;">Q핏 볼캡 게재면</span>
               </div>
             </div>
@@ -2730,7 +2946,7 @@
       </div>
 
       <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
-      <div class="slide-pg">06 / 07</div>
+      <div class="slide-pg">07 / 08</div>
     </section>
 
 
@@ -2949,7 +3165,7 @@
       </div>
 
       <div class="slide-brand"><span class="dot"></span> MLB 2026.04 Review</div>
-      <div class="slide-pg">07 / 07</div>
+      <div class="slide-pg">08 / 08</div>
     </section>
 
   </div><!-- /stage -->
@@ -3146,10 +3362,10 @@
   if (c2) new Chart(c2, {
     type: 'bar',
     data: {
-      labels: ['TS (티셔츠)', 'CP (볼캡)', 'WJ', 'WP', 'SX'],
+      labels: ['TS (티셔츠)', 'CP (볼캡)', 'SX', 'WJ', 'WP'],
       datasets: [
-        { label: '3월', data: [344000, 13174000, 2537000, 139000, 6251000], backgroundColor: COL.bar3, borderRadius: 3, categoryPercentage: 0.75, barPercentage: 0.9 },
-        { label: '4월', data: [23185000, 10281000, 1680000, 1001000, 902000], backgroundColor: COL.bar4, borderRadius: 3, categoryPercentage: 0.75, barPercentage: 0.9 }
+        { label: '3월', data: [344000, 13174000, 5251000, 2537000, 139000], backgroundColor: COL.bar3, borderRadius: 3, categoryPercentage: 0.75, barPercentage: 0.9 },
+        { label: '4월', data: [23185000, 10281000, 903000, 1680000, 1001000], backgroundColor: COL.bar4, borderRadius: 3, categoryPercentage: 0.75, barPercentage: 0.9 }
       ]
     },
     options: {
@@ -3163,11 +3379,14 @@
           anchor: 'end', align: 'top', offset: 1,
           color: COL.text,
           font: { size: 8, weight: 700, family: 'Pretendard, sans-serif' },
-          formatter: v => v >= 1000000 ? (v/1000000).toFixed(1)+'M' : v >= 1000 ? Math.round(v/1000)+'K' : v
+          formatter: v => {
+            const t = v / 10000000;
+            return (t >= 1 ? t.toFixed(1) : t.toFixed(2)) + '천만원';
+          }
         }
       },
       scales: {
-        y: { beginAtZero: true, ticks: { callback: v => v/1000000 + 'M', font: { size: 9, family: 'Pretendard, sans-serif' }, color: COL.muted, maxTicksLimit: 4 }, grid: { color: COL.grid } },
+        y: { beginAtZero: true, ticks: { callback: v => (v/10000000) + '천만원', font: { size: 9, family: 'Pretendard, sans-serif' }, color: COL.muted, maxTicksLimit: 4 }, grid: { color: COL.grid } },
         x: { ticks: { font: { size: 10, weight: 700, family: 'Pretendard, sans-serif' }, color: COL.text }, grid: { display: false } }
       }
     }
