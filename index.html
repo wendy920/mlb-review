@@ -2316,14 +2316,40 @@
             <canvas id="chart-month-revenue"></canvas>
           </div>
 
-          <!-- Monthly YoY badges -->
-          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;flex-shrink:0;">
-            <div style="padding:5px 8px;background:#E6F7EF;border-radius:5px;text-align:center;font-size:11px;font-weight:700;color:#0C8A52;">1월 +11% YoY</div>
-            <div style="padding:5px 8px;background:#E6F7EF;border-radius:5px;text-align:center;font-size:11px;font-weight:700;color:#0C8A52;">2월 +1% YoY</div>
-            <div style="padding:5px 8px;background:#E6F7EF;border-radius:5px;text-align:center;font-size:11px;font-weight:700;color:#0C8A52;">3월 +23% YoY</div>
-            <div style="padding:5px 8px;background:#E6F7EF;border-radius:5px;text-align:center;font-size:11px;font-weight:700;color:#0C8A52;">4월 +33% YoY</div>
-            <div style="padding:5px 8px;background:var(--bg-subtle);border:1px dashed var(--border-strong);border-radius:5px;text-align:center;font-size:11px;font-weight:600;color:var(--text-muted);">5월 예정</div>
-            <div style="padding:5px 8px;background:var(--bg-subtle);border:1px dashed var(--border-strong);border-radius:5px;text-align:center;font-size:11px;font-weight:600;color:var(--text-muted);">6월 예정</div>
+          <!-- TIMELINE row (PPT 1 style) -->
+          <div style="display:grid;grid-template-columns:120px repeat(6, 1fr);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:8px;flex-shrink:0;background:#fff;">
+            <!-- TIMELINE label -->
+            <div style="background:#1A1C1F;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:0.18em;">TIMELINE</div>
+            <!-- 1월 -->
+            <div style="border-right:1px solid var(--border);text-align:center;padding:6px 4px;">
+              <div style="font-size:12px;font-weight:800;color:var(--text-primary);background:var(--bg-subtle);padding:4px 0;border-radius:3px;margin-bottom:4px;">1월</div>
+              <div style="font-size:11px;font-weight:700;color:#0C8A52;">YoY +11.4%</div>
+            </div>
+            <!-- 2월 -->
+            <div style="border-right:1px solid var(--border);text-align:center;padding:6px 4px;">
+              <div style="font-size:12px;font-weight:800;color:var(--text-primary);background:var(--bg-subtle);padding:4px 0;border-radius:3px;margin-bottom:4px;">2월</div>
+              <div style="font-size:11px;font-weight:700;color:#0C8A52;">YoY +1.1%</div>
+            </div>
+            <!-- 3월 -->
+            <div style="border-right:1px solid var(--border);text-align:center;padding:6px 4px;">
+              <div style="font-size:12px;font-weight:800;color:var(--text-primary);background:var(--bg-subtle);padding:4px 0;border-radius:3px;margin-bottom:4px;">3월</div>
+              <div style="font-size:11px;font-weight:700;color:#0C8A52;">YoY +22.9%</div>
+            </div>
+            <!-- 4월 -->
+            <div style="border-right:1px solid var(--border);text-align:center;padding:6px 4px;">
+              <div style="font-size:12px;font-weight:800;color:var(--text-primary);background:var(--bg-subtle);padding:4px 0;border-radius:3px;margin-bottom:4px;">4월</div>
+              <div style="font-size:11px;font-weight:700;color:#0C8A52;">YoY +32.6%</div>
+            </div>
+            <!-- 5월 -->
+            <div style="border-right:1px solid var(--border);text-align:center;padding:6px 4px;">
+              <div style="font-size:12px;font-weight:800;color:var(--text-muted);background:var(--bg-subtle);padding:4px 0;border-radius:3px;margin-bottom:4px;">5월</div>
+              <div style="font-size:11px;font-weight:600;color:var(--text-muted);font-style:italic;">(진행중)</div>
+            </div>
+            <!-- 6월 -->
+            <div style="text-align:center;padding:6px 4px;">
+              <div style="font-size:12px;font-weight:800;color:var(--text-muted);background:var(--bg-subtle);padding:4px 0;border-radius:3px;margin-bottom:4px;">6월</div>
+              <div style="font-size:11px;font-weight:600;color:var(--text-muted);font-style:italic;">(예정)</div>
+            </div>
           </div>
         </div>
 
@@ -3701,10 +3727,8 @@
       data: {
         labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
         datasets: [
-          { type: 'bar', label: '25년 총매출', data: [22.5, 20.5, 24, 22, null, null], backgroundColor: '#D1D8E2', borderRadius: 4, categoryPercentage: 0.7, barPercentage: 0.85, order: 3, yAxisID: 'y' },
-          { type: 'bar', label: '26년 총매출', data: [25, 21, 29.5, 29.5, null, null], backgroundColor: '#FECACA', borderRadius: 4, categoryPercentage: 0.7, barPercentage: 0.85, order: 2, yAxisID: 'y' },
-          { type: 'line', label: 'CP 볼캡', data: [6, 7, 13, 14, null, null], borderColor: '#DC2626', backgroundColor: '#DC2626', borderWidth: 2.5, pointRadius: 4, pointBackgroundColor: '#DC2626', tension: 0.35, order: 1, yAxisID: 'y' },
-          { type: 'line', label: 'TS 티셔츠', data: [0.3, 0.5, 0.5, 3.5, null, null], borderColor: '#D97706', backgroundColor: '#D97706', borderWidth: 2, borderDash: [5, 4], pointRadius: 3, pointBackgroundColor: '#D97706', tension: 0.35, order: 0, yAxisID: 'y' }
+          { type: 'bar', label: '25년 총매출', data: [22.7, 20.8, 24.1, 22.3, null, null], backgroundColor: '#D1D8E2', borderRadius: 4, categoryPercentage: 0.7, barPercentage: 0.85, order: 3, yAxisID: 'y' },
+          { type: 'bar', label: '26년 총매출', data: [25.3, 21.1, 29.6, 29.6, 32, 33], backgroundColor: ctx => { const i = ctx.dataIndex; return (i === 4 || i === 5) ? 'rgba(254,202,202,0.6)' : '#FECACA'; }, borderColor: ctx => { const i = ctx.dataIndex; return (i === 4 || i === 5) ? '#FCA5A5' : 'transparent'; }, borderWidth: ctx => { const i = ctx.dataIndex; return (i === 4 || i === 5) ? 1.5 : 0; }, borderDash: ctx => { const i = ctx.dataIndex; return (i === 4 || i === 5) ? [4, 3] : []; }, borderRadius: 4, categoryPercentage: 0.7, barPercentage: 0.85, order: 2, yAxisID: 'y' }
         ]
       },
       options: {
@@ -3747,6 +3771,31 @@
             color: COL.text,
             font: { size: 9, weight: 700, family: 'Pretendard, sans-serif' },
             formatter: v => v
+          },
+          annotation: {
+            annotations: {
+              jasaTurnaroundLine: {
+                type: 'line',
+                xMin: 3.27, xMax: 3.93,
+                yMin: 7.25, yMax: 8.5,
+                borderColor: '#12B76A',
+                borderWidth: 2,
+                borderDash: [5, 4]
+              },
+              jasaTurnaroundLabel: {
+                type: 'label',
+                xValue: 3.5,
+                yValue: 9.2,
+                content: ['5월 +20% 턴어라운드'],
+                color: '#0C8A52',
+                font: { size: 10, weight: 800, family: 'Pretendard, sans-serif' },
+                backgroundColor: 'rgba(255,255,255,0.92)',
+                borderColor: '#86E0B3',
+                borderWidth: 1,
+                borderRadius: 4,
+                padding: 4
+              }
+            }
           }
         },
         scales: {
