@@ -3823,7 +3823,7 @@
         responsive: true, maintainAspectRatio: false,
         layout: { padding: { top: 16, right: 6, bottom: 0 } },
         plugins: {
-          legend: { position: 'bottom', labels: { boxWidth: 11, boxHeight: 11, font: { size: 10, family: 'Pretendard, sans-serif' }, color: COL.text, padding: 6 } },
+          legend: { position: 'bottom', labels: { boxWidth: 8, boxHeight: 8, font: { size: 10, family: 'Pretendard, sans-serif' }, color: COL.text, padding: 8, usePointStyle: true, pointStyle: 'circle' } },
           tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}${ctx.dataset.yAxisID === 'y1' ? '%' : '억'}` } },
           datalabels: {
             anchor: 'end', align: ctx => ctx.dataset.type === 'line' ? 'top' : 'top', offset: 2,
